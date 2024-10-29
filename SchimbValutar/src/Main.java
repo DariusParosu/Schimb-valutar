@@ -1,64 +1,52 @@
 import java.text.DecimalFormat;
-import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-        System.out.println("Moneda de plecare( RON, USD, EUR, GBP): ");
-        Scanner mDP = new Scanner(System.in);
-        String monedaDePlecare = mDP.nextLine();
-
-        System.out.println("Moneda rezultanta( RON, USD, EUR, GBP): ");
-        Scanner mR = new Scanner(System.in);
-        String monedaRezultanta = mR.nextLine();
-
+    public Main(float nrBani, String monedaDePlecare, String monedaRezultanta) {
         float schimbValutar = aflaSchimbulValutar(monedaDePlecare, monedaRezultanta);
 
-        if (schimbValutar == 0) {
-            System.exit(0);
-        }
+        float rezultatConversie = conversiaBanilor(nrBani, schimbValutar);
 
-        float rezultatConversie = conversiaBanilor(monedaDePlecare, schimbValutar);
+        GUI.AfisareRezultat(rezultatConversie, monedaRezultanta);
+    }
 
-        System.out.println("Numarul de " + monedaRezultanta.toUpperCase() + " este: " + rezultatConversie);
+    public static void main(String[] args) {
+        new GUI();
     }
 
     public static float aflaSchimbulValutar(String monedaDePlecare, String monedaRezultanta) {
-        final float LeiInDolari = 0.22F;
-        final float LeiInEuro = 0.20F;
-        final float LeiInLireSterline = 0.17F;
-        final float DolariInLei = 4.60F;
-        final float DolariInEuro = 0.93F;
-        final float DolariInLireSterline = 0.77F;
-        final float EuroInLei = 4.97F;
-        final float EuroInDolari = 1.08F;
-        final float EuroInLireSterline = 0.83F;
-        final float LireSterlineInLei = 5.97F;
-        final float LireSterlineInDolari = 1.30F;
-        final float LireSterlineInEuro = 1.20F;
+        final float leiInDolari = 0.22F;
+        final float leiInEuro = 0.20F;
+        final float leiInLireSterline = 0.17F;
+        final float dolariInLei = 4.61F;
+        final float dolariInEuro = 0.93F;
+        final float dolariInLireSterline = 0.77F;
+        final float euroInLei = 4.97F;
+        final float euroInDolari = 1.08F;
+        final float euroInLireSterline = 0.83F;
+        final float lireSterlineInLei = 5.99F;
+        final float lireSterlineInDolari = 1.30F;
+        final float lireSterlineInEuro = 1.20F;
+        final int aceeasiMoneda = 1;
         float schimbValutarFinal = 0;
 
         switch (monedaDePlecare.toUpperCase()) {
             case "RON":
                 switch (monedaRezultanta.toUpperCase()) {
                     case "RON":
-                        System.out.println("Alege alta moneda");
+                        schimbValutarFinal = aceeasiMoneda;
                         break;
 
                     case "USD":
-                        schimbValutarFinal = LeiInDolari;
+                        schimbValutarFinal = leiInDolari;
                         break;
 
                     case "EUR":
-                        schimbValutarFinal = LeiInEuro;
+                        schimbValutarFinal = leiInEuro;
                         break;
 
                     case "GBP":
-                        schimbValutarFinal = LeiInLireSterline;
-                        break;
-
-                    default:
-                        System.out.println("Moneda " + monedaRezultanta + " nu a fost gasita");
+                        schimbValutarFinal = leiInLireSterline;
                         break;
 
                 }
@@ -67,23 +55,19 @@ public class Main {
             case "USD":
                 switch (monedaRezultanta.toUpperCase()) {
                     case "RON":
-                        schimbValutarFinal = DolariInLei;
+                        schimbValutarFinal = dolariInLei;
                         break;
 
                     case "USD":
-                        System.out.println("Alege alta moneda");
+                        schimbValutarFinal = aceeasiMoneda;
                         break;
 
                     case "EUR":
-                        schimbValutarFinal = DolariInEuro;
+                        schimbValutarFinal = dolariInEuro;
                         break;
 
                     case "GBP":
-                        schimbValutarFinal = DolariInLireSterline;
-                        break;
-
-                    default:
-                        System.out.println("Moneda " + monedaRezultanta + " nu a fost gasita");
+                        schimbValutarFinal = dolariInLireSterline;
                         break;
 
                 }
@@ -92,23 +76,19 @@ public class Main {
             case "EUR":
                 switch (monedaRezultanta.toUpperCase()) {
                     case "RON":
-                        schimbValutarFinal = EuroInLei;
+                        schimbValutarFinal = euroInLei;
                         break;
 
                     case "USD":
-                        schimbValutarFinal = EuroInDolari;
+                        schimbValutarFinal = euroInDolari;
                         break;
 
                     case "EUR":
-                        System.out.println("Alege alta moneda");
+                        schimbValutarFinal = aceeasiMoneda;
                         break;
 
                     case "GBP":
-                        schimbValutarFinal = EuroInLireSterline;
-                        break;
-
-                    default:
-                        System.out.println("Moneda " + monedaRezultanta + " nu a fost gasita");
+                        schimbValutarFinal = euroInLireSterline;
                         break;
 
                 }
@@ -117,30 +97,22 @@ public class Main {
             case "GBP":
                 switch (monedaRezultanta.toUpperCase()) {
                     case "RON":
-                        schimbValutarFinal = LireSterlineInLei;
+                        schimbValutarFinal = lireSterlineInLei;
                         break;
 
                     case "USD":
-                        schimbValutarFinal = LireSterlineInDolari;
+                        schimbValutarFinal = lireSterlineInDolari;
                         break;
 
                     case "EUR":
-                        schimbValutarFinal = LireSterlineInEuro;
+                        schimbValutarFinal = lireSterlineInEuro;
                         break;
 
                     case "GBP":
-                        System.out.println("Alege alta moneda");
-                        break;
-
-                    default:
-                        System.out.println("Moneda " + monedaRezultanta + " nu a fost gasita");
+                        schimbValutarFinal = aceeasiMoneda;
                         break;
 
                 }
-                break;
-
-            default:
-                System.out.println("Moneda " + monedaDePlecare + " nu a fost gasita");
                 break;
 
         }
@@ -148,10 +120,7 @@ public class Main {
         return schimbValutarFinal;
     }
 
-    public static float conversiaBanilor(String monedaDePlecare, float schimbValutar) {
-        System.out.println("Introdu numarul de " + monedaDePlecare.toUpperCase() + ": ");
-        Scanner nB = new Scanner(System.in);
-        float nrBani = nB.nextFloat();
+    public static float conversiaBanilor(float nrBani, float schimbValutar) {
         return Float.parseFloat(new DecimalFormat("0.00").format(nrBani * schimbValutar));
     }
 }
