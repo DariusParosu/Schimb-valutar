@@ -4,6 +4,12 @@
 Codul este original si este usor de inteles.
 
 
+## Features
+
+- Usor de inteles
+- Are un GUI
+
+
 ## Suporta urmatoarele monede
 
 - RON
