@@ -30,92 +30,37 @@ public class Main {
         final int aceeasiMoneda = 1;
         float schimbValutarFinal = 0;
 
-        switch (monedaDePlecare.toUpperCase()) {
-            case "RON":
-                switch (monedaRezultanta.toUpperCase()) {
-                    case "RON":
-                        schimbValutarFinal = aceeasiMoneda;
-                        break;
-
-                    case "USD":
-                        schimbValutarFinal = leiInDolari;
-                        break;
-
-                    case "EUR":
-                        schimbValutarFinal = leiInEuro;
-                        break;
-
-                    case "GBP":
-                        schimbValutarFinal = leiInLireSterline;
-                        break;
-
-                }
-                break;
-
-            case "USD":
-                switch (monedaRezultanta.toUpperCase()) {
-                    case "RON":
-                        schimbValutarFinal = dolariInLei;
-                        break;
-
-                    case "USD":
-                        schimbValutarFinal = aceeasiMoneda;
-                        break;
-
-                    case "EUR":
-                        schimbValutarFinal = dolariInEuro;
-                        break;
-
-                    case "GBP":
-                        schimbValutarFinal = dolariInLireSterline;
-                        break;
-
-                }
-                break;
-
-            case "EUR":
-                switch (monedaRezultanta.toUpperCase()) {
-                    case "RON":
-                        schimbValutarFinal = euroInLei;
-                        break;
-
-                    case "USD":
-                        schimbValutarFinal = euroInDolari;
-                        break;
-
-                    case "EUR":
-                        schimbValutarFinal = aceeasiMoneda;
-                        break;
-
-                    case "GBP":
-                        schimbValutarFinal = euroInLireSterline;
-                        break;
-
-                }
-                break;
-
-            case "GBP":
-                switch (monedaRezultanta.toUpperCase()) {
-                    case "RON":
-                        schimbValutarFinal = lireSterlineInLei;
-                        break;
-
-                    case "USD":
-                        schimbValutarFinal = lireSterlineInDolari;
-                        break;
-
-                    case "EUR":
-                        schimbValutarFinal = lireSterlineInEuro;
-                        break;
-
-                    case "GBP":
-                        schimbValutarFinal = aceeasiMoneda;
-                        break;
-
-                }
-                break;
-
-        }
+        schimbValutarFinal = switch (monedaDePlecare.toUpperCase()) {
+            case "RON" -> switch (monedaRezultanta.toUpperCase()) {
+                case "RON" -> aceeasiMoneda;
+                case "USD" -> leiInDolari;
+                case "EUR" -> leiInEuro;
+                case "GBP" -> leiInLireSterline;
+                default -> schimbValutarFinal;
+            };
+            case "USD" -> switch (monedaRezultanta.toUpperCase()) {
+                case "RON" -> dolariInLei;
+                case "USD" -> aceeasiMoneda;
+                case "EUR" -> dolariInEuro;
+                case "GBP" -> dolariInLireSterline;
+                default -> schimbValutarFinal;
+            };
+            case "EUR" -> switch (monedaRezultanta.toUpperCase()) {
+                case "RON" -> euroInLei;
+                case "USD" -> euroInDolari;
+                case "EUR" -> aceeasiMoneda;
+                case "GBP" -> euroInLireSterline;
+                default -> schimbValutarFinal;
+            };
+            case "GBP" -> switch (monedaRezultanta.toUpperCase()) {
+                case "RON" -> lireSterlineInLei;
+                case "USD" -> lireSterlineInDolari;
+                case "EUR" -> lireSterlineInEuro;
+                case "GBP" -> aceeasiMoneda;
+                default -> schimbValutarFinal;
+            };
+            default -> 0;
+        };
 
         return schimbValutarFinal;
     }

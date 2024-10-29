@@ -37,7 +37,7 @@ public class GUI implements ActionListener {
         textField.setBounds(10, 80, 75, 25);
         panel.add(textField);
 
-        primulComboBox = new JComboBox<String>(date);
+        primulComboBox = new JComboBox<>(date);
         primulComboBox.setBounds(85, 80, 50, 25);
         panel.add(primulComboBox);
 
@@ -45,7 +45,7 @@ public class GUI implements ActionListener {
         alDoileaLabel.setBounds(150, 80, 25, 25);
         panel.add(alDoileaLabel);
 
-        alDoileaComboBox =new JComboBox<String>(date);
+        alDoileaComboBox =new JComboBox<>(date);
         alDoileaComboBox.setBounds(170, 80, 50, 25);
         panel.add(alDoileaComboBox);
 
